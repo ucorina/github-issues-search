@@ -7,7 +7,8 @@ const IssueFiltersBar = ({ initialFilterValues, onFiltersChanged }) => {
     <FiltersBar
       filterWidgets={[
         { name: "state", type: FILTER_TYPE.STATUS },
-        { name: "labels", type: FILTER_TYPE.LABELS }
+        { name: "labels", type: FILTER_TYPE.LABELS },
+        { name: "assignee", type: FILTER_TYPE.ASSIGNEE }
       ]}
       onFiltersChanged={onFiltersChanged}
       initialFilterValues={initialFilterValues}

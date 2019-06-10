@@ -4,7 +4,15 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import IssueLabel from "../IssueLabel";
 
-const Issue = ({ number, title, labels, created_at, user, milestone }) => {
+const Issue = ({
+  number,
+  title,
+  labels,
+  created_at,
+  user,
+  milestone,
+  assignee
+}) => {
   return (
     <TableRow>
       <TableCell>
@@ -18,7 +26,8 @@ const Issue = ({ number, title, labels, created_at, user, milestone }) => {
         </div>
         <div className={styles.issueDetails}>
           <span>
-            #{number} opened {created_at} by {user.login}
+            #{number} opened {created_at} by {user.login}, assigned to{" "}
+            {assignee ? assignee.login : "no one"}
           </span>
           <span>{milestone}</span>
         </div>

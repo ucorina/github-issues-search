@@ -3,8 +3,8 @@ import LabelsFilter from "../../components/FiltersBar/filters/LabelsFilter";
 
 const mapStateToProps = state => ({
   labels: state.labels.data,
-  isLoading: state.issues.isLoading,
-  errorMessage: state.issues.errorMessage
+  isLoading: state.labels.isLoading,
+  errorMessage: state.labels.errorMessage
 });
 
 export default connect(
