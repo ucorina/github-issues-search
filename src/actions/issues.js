@@ -12,7 +12,7 @@ export const fetchIssues = ({ owner, repository }) => {
       return;
     }
 
-    dispatch({ type: FETCH_ISSUES_LOADING });
+    dispatch({ type: FETCH_ISSUES_LOADING, owner, repository });
     getGithubIssues(owner, repository)
       .then(issues => dispatch({ type: FETCH_ISSUES_SUCCESS, issues }))
       .catch(error => dispatch({ type: FETCH_ISSUES_ERROR, error }));

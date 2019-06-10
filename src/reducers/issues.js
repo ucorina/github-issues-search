@@ -16,9 +16,10 @@ const issuesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ISSUES_LOADING:
       return {
-        ...state,
-        isLoading: true,
-        issues: []
+        ...initialState,
+        owner: action.owner,
+        repository: action.repository,
+        isLoading: true
       };
     case FETCH_ISSUES_SUCCESS:
       return {
@@ -27,11 +28,10 @@ const issuesReducer = (state = initialState, action) => {
         issues: action.issues
       };
     case FETCH_ISSUES_ERROR:
-      // TODO Check exactly how to read the error from here
       return {
         ...state,
         isLoading: false,
-        errorMessage: JSON.stringify(action.error)
+        errorMessage: action.error.message
       };
     default:
       return state;
