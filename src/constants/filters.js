@@ -1,3 +1,4 @@
 export const FILTER_TYPE = {
-  STATUS: "status"
+  STATUS: "status",
+  LABELS: "labels"
 };

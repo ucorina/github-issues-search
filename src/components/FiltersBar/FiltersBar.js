@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Filter from "./filters/Filter";
+import Grid from "@material-ui/core/Grid";
 
 const FiltersBar = ({
   filterWidgets,
@@ -14,19 +15,20 @@ const FiltersBar = ({
   }, [filterValues, onFiltersChanged]);
 
   return (
-    <div>
+    <Grid container justify="center" alignItems="flex-end" spacing={3}>
       {filterWidgets.map(widget => (
-        <Filter
-          name={widget.name}
-          key={widget.name}
-          type={widget.type}
-          value={filterValues[widget.name]}
-          onChange={value =>
-            setFilterValues({ ...filterValues, [widget.name]: value })
-          }
-        />
+        <Grid item key={widget.name}>
+          <Filter
+            name={widget.name}
+            type={widget.type}
+            value={filterValues[widget.name]}
+            onChange={value =>
+              setFilterValues({ ...filterValues, [widget.name]: value })
+            }
+          />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 

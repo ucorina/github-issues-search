@@ -3,31 +3,17 @@ import {
   FETCH_ISSUES_SUCCESS,
   FETCH_ISSUES_ERROR
 } from "../constants/issues";
-import { getGithubIssues } from "../githubApi";
+import { getRepositoryIssues } from "../githubApi";
 
 export const fetchIssues = ({ owner, repository, query = {} }) => {
   return dispatch => {
     if (!owner || !repository) {
-      dispatch({ type: FETCH_ISSUES_SUCCESS, issues: [] });
-      return;
+      return dispatch({ type: FETCH_ISSUES_SUCCESS, data: [] });
     }
 
     dispatch({ type: FETCH_ISSUES_LOADING, owner, repository, query });
-    getGithubIssues(owner, repository, query)
-      .then(issues => dispatch({ type: FETCH_ISSUES_SUCCESS, issues }))
+    return getRepositoryIssues(owner, repository, query)
+      .then(data => dispatch({ type: FETCH_ISSUES_SUCCESS, data }))
       .catch(error => dispatch({ type: FETCH_ISSUES_ERROR, error }));
-  };
-};
-
-export const fetchDefaulIssuesOnLoad = () => {
-  return (dispatch, getState) => {
-    const state = getState();
-    return dispatch(
-      fetchIssues({
-        owner: state.issues.owner,
-        repository: state.issues.repository,
-        query: state.issues.query
-      })
-    );
   };
 };

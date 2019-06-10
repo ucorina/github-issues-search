@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import IssuesList from "../components/IssuesList";
+import LabelsFilter from "../../components/FiltersBar/filters/LabelsFilter";
 
 const mapStateToProps = state => ({
-  issues: state.issues.data,
+  labels: state.labels.data,
   isLoading: state.issues.isLoading,
   errorMessage: state.issues.errorMessage
 });
@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(IssuesList);
+)(LabelsFilter);

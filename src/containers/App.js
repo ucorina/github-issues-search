@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import App from "../components/App";
-import { fetchDefaulIssuesOnLoad } from "../actions/issues";
+import { fetchRepositoryDataOnLoad } from "../actions/bootstrap";
 
 const mapDispatchToProps = dispatch => ({
-  onAppLoaded: () => dispatch(fetchDefaulIssuesOnLoad())
+  onAppLoaded: () => dispatch(fetchRepositoryDataOnLoad())
 });
 
 export default connect(

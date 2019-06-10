@@ -1,33 +1,29 @@
 import {
-  FETCH_ISSUES_LOADING,
-  FETCH_ISSUES_SUCCESS,
-  FETCH_ISSUES_ERROR
-} from "../constants/issues";
+  FETCH_LABELS_LOADING,
+  FETCH_LABELS_SUCCESS,
+  FETCH_LABELS_ERROR
+} from "../constants/labels";
 
 const initialState = {
-  query: {
-    state: "all"
-  },
   isLoading: false,
   data: [],
   errorMessage: ""
 };
 
-const issuesReducer = (state = initialState, action) => {
+const labelsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_ISSUES_LOADING:
+    case FETCH_LABELS_LOADING:
       return {
         ...initialState,
-        query: action.query,
         isLoading: true
       };
-    case FETCH_ISSUES_SUCCESS:
+    case FETCH_LABELS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         data: action.data
       };
-    case FETCH_ISSUES_ERROR:
+    case FETCH_LABELS_ERROR:
       return {
         ...state,
         isLoading: false,
@@ -38,4 +34,4 @@ const issuesReducer = (state = initialState, action) => {
   }
 };
 
-export default issuesReducer;
+export default labelsReducer;

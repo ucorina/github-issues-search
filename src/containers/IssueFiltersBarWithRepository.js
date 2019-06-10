@@ -4,8 +4,8 @@ import { fetchIssues } from "../actions/issues";
 
 const mapStateToProps = state => ({
   initialFilterValues: state.issues.query,
-  initialOwner: state.issues.owner,
-  initialRepository: state.issues.repository
+  initialOwner: state.repository.owner,
+  initialRepository: state.repository.repository
 });
 
 const mapDispatchToProps = dispatch => ({

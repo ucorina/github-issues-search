@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Issue.module.css";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
+import IssueLabel from "../IssueLabel";
 
 const Issue = ({ number, title, labels, created_at, user, milestone }) => {
   return (
@@ -11,13 +12,7 @@ const Issue = ({ number, title, labels, created_at, user, milestone }) => {
           <h4 className={styles.title}>{title}</h4>
           <span className={styles.labelContainer}>
             {labels.map(label => (
-              <span
-                key={label.id}
-                className={styles.issueLabel}
-                style={{ backgroundColor: `#${label.color}` }}
-              >
-                {label.name}
-              </span>
+              <IssueLabel key={label.id} label={label} />
             ))}
           </span>
         </div>
