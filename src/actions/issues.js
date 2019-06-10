@@ -3,7 +3,7 @@ import {
   FETCH_ISSUES_SUCCESS,
   FETCH_ISSUES_ERROR
 } from "../constants/issues";
-import { searchRepositoryIssues } from "../githubApi";
+import { getRepositoryIssues } from "../githubApi";
 
 export const fetchIssues = ({ owner, repository, query = {} }) => {
   return dispatch => {
@@ -12,7 +12,7 @@ export const fetchIssues = ({ owner, repository, query = {} }) => {
     }
 
     dispatch({ type: FETCH_ISSUES_LOADING, owner, repository, query });
-    return searchRepositoryIssues(owner, repository, query)
+    return getRepositoryIssues(owner, repository, query)
       .then(data => dispatch({ type: FETCH_ISSUES_SUCCESS, data }))
       .catch(error => dispatch({ type: FETCH_ISSUES_ERROR, error }));
   };

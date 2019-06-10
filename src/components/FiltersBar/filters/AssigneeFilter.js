@@ -25,10 +25,9 @@ const AssigneeFilter = ({ assignees, value, onChange, isLoading }) => {
       <Select
         value={options.find(option => option.value === value)}
         className={classes.select}
-        onChange={item => (item ? onChange(item.value) : onChange(null))}
+        onChange={item => (item ? onChange(item.value) : onChange("*"))}
         TextFieldProps={{
-          label: "Assignee",
-          placeholder: "Search a country (start with a)"
+          label: "Assignee"
         }}
         style={selectStyles}
         options={options}

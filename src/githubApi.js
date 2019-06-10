@@ -33,26 +33,3 @@ export const getRepositoryMilestones = (owner, repository) => {
 export const getRepositoryAssignees = (owner, repository) => {
   return fetchFromGithub(`repos/${owner}/${repository}/assignees`);
 };
-
-// TODO Decouple query mapping
-export const searchRepositoryIssues = (owner, repository, queryParams = {}) => {
-  const { state, labels, assignee } = queryParams;
-  const query = [];
-  if (repository && owner) {
-    query.push(`repo:${owner}/${repository}`);
-  }
-  if (state) {
-    if (state !== "all") {
-      query.push(`state:${state}`);
-    }
-  }
-  if (labels) {
-    query.push(`labels:${labels}`);
-  }
-  if (assignee) {
-    query.push(`assignee:${assignee}`);
-  }
-  return fetchFromGithub(`search/issues`, { q: query.join(" ") }).then(
-    result => result.items
-  );
-};
