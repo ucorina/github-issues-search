@@ -4,14 +4,18 @@ Allows users to search a repository's issues using point and click filters inste
 
 Currently supports only "State", "Labels" and "Assignee" filters. 
 
-Tech stack:
+### Getting started
+
+Run `yarn install` and `yarn start`.
+
+## Tech stack
 
 * React, Redux
 * Redux Thunk
 * Material UI 
 * react-select
 
-Todos:
+### Todos
 
 * [ ] Use `react-select` for the "Labels" filter as well (as this one now uses Material UI Select and the "Assignee" uses react-select)
 * [ ] Make sure styling across all filters is consistent (current styling of the "Assignee" filter is different from the other ones)
