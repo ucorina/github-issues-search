@@ -7,6 +7,9 @@ import {
 const initialState = {
   owner: "tensorflow",
   repository: "tfjs",
+  query: {
+    state: "all"
+  },
   isLoading: false,
   issues: [],
   errorMessage: ""
@@ -19,6 +22,7 @@ const issuesReducer = (state = initialState, action) => {
         ...initialState,
         owner: action.owner,
         repository: action.repository,
+        query: action.query,
         isLoading: true
       };
     case FETCH_ISSUES_SUCCESS:

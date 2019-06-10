@@ -5,15 +5,15 @@ import {
 } from "../constants/issues";
 import { getGithubIssues } from "../githubApi";
 
-export const fetchIssues = ({ owner, repository }) => {
+export const fetchIssues = ({ owner, repository, query = {} }) => {
   return dispatch => {
     if (!owner || !repository) {
       dispatch({ type: FETCH_ISSUES_SUCCESS, issues: [] });
       return;
     }
 
-    dispatch({ type: FETCH_ISSUES_LOADING, owner, repository });
-    getGithubIssues(owner, repository)
+    dispatch({ type: FETCH_ISSUES_LOADING, owner, repository, query });
+    getGithubIssues(owner, repository, query)
       .then(issues => dispatch({ type: FETCH_ISSUES_SUCCESS, issues }))
       .catch(error => dispatch({ type: FETCH_ISSUES_ERROR, error }));
   };
@@ -25,7 +25,8 @@ export const fetchDefaulIssuesOnLoad = () => {
     return dispatch(
       fetchIssues({
         owner: state.issues.owner,
-        repository: state.issues.repository
+        repository: state.issues.repository,
+        query: state.issues.query
       })
     );
   };
